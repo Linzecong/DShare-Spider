@@ -135,10 +135,16 @@ void Widget::getContent()
         else
             temp=tempData.mid(tempData.indexOf("\"blk_content\">")+14,tempData.indexOf("<!-- health_web")-14-tempData.indexOf("\"blk_content\">"));
 
-        temp.replace("\n\t\t\t\t<script type=\"text/javascript\">\n\t\t\t\t\twindow.sina_survey_config = {\n    \t\t\t\t\tsurveyCss: true,               //调查问答样式true, false, http （不使用默认样式配置false或者不传此参数）\n    \t\t\t\t\tresultCss: true,               //调查结果样式true, false, http （不使用默认样式配置false或者不传此参数）\n    \t\t\t\t\tsource: 'vote'               //通过来源设置图片宽高 sina(手浪), vote(默认)\n\t\t\t\t\t}\n\t\t\t\t</script>\n\n\n\n","");
-       // temp.replace(" = { surveyCss: true, //调查问答样式true,","");
-       // temp.replace(" false, http （不使用默认样式配置false或者不传此参数） resultCss: true, //调查结果样式true, false, http （不使用默认样式配置false或者不传此参数） source: 'vote' //通过来源设置图片宽高 sina(手浪), vote(默认) }","");
-
+        temp.replace("<script type=\"text/javascript\">","");
+       temp.replace("window.sina_survey_config = {","");
+       temp.replace("surveyCss: true,","");
+       temp.replace("//调查问答样式true, false, http （不使用默认样式配置false或者不传此参数）","");
+       temp.replace("resultCss: true,","");
+       temp.replace("source: 'vote'","");
+       temp.replace("//通过来源设置图片宽高 sina(手浪), vote(默认)","");
+       temp.replace("//调查结果样式true, false, http （不使用默认样式配置false或者不传此参数）","");
+       temp.replace("}","");
+       temp.replace("</script>","");
         qDebug()<<temp;
         ContentList.append(temp);
 
